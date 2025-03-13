@@ -14,7 +14,7 @@ if (builder.Environment.IsDevelopment())
 }
 else
 {
-    var azureSqlConnection = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+    var azureSqlConnection = builder.Configuration["AZURE_SQL_CONNECTIONSTRING"];
     Console.WriteLine($"Retrieved AZURE_SQL_CONNECTIONSTRING: {azureSqlConnection}");
     builder.Services.AddDbContext<MyDatabaseContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
